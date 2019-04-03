@@ -1,0 +1,153 @@
+ul {
+  list-style-type: none;
+  color: black;
+  margin: 0;
+  padding: 0.05%;
+  overflow: hidden;
+  background-color: #999;
+
+}
+header {
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky;
+  margin: 0;
+}
+li>a {
+  float: left;
+  text-decoration: none;
+  color: black;
+  background-color: orange;
+  font-size: 1.5vw;
+  font-family: sans-serif;
+  width: 16.66667%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: center;
+  opacity: 0.8;
+}
+
+body {
+  margin: 0;
+  background-color: lightgrey;
+}
+li>a:hover {
+  background-color: grey;
+}
+main {
+  margin-left: 0;
+  margin-right: 15%;
+  background-color: white;
+  height: auto;
+  margin-top: 1%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 7%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.box:hover {
+  box-shadow: 0px 0px 2px 2px lightgrey;
+}
+.box {
+  margin-right: 40%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 0%;
+  margin-bottom: 5%;
+}
+article img {
+  width: 100%;
+}
+article p {
+  text-align: center;
+  font-size: 0.8vw;
+}
+article h1 {
+  font-size: 0.8vw;
+}
+article a {
+  text-decoration: none;
+  color: black;
+}
+@media (max-width: 1200px) {
+  main {
+        margin-left: 0%;
+        margin-right: 15%;
+        background-color: white;
+        height: 100%;
+        margin-top: 1%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 2%;
+        padding-left: 11%;
+     }
+ article p {
+   text-align: center;
+   font-size: 1.2vw;
+}
+ article h1 {
+   font-size: 1.2vw;
+   }
+ li>a {
+   font-size: 2vw;
+ }
+}
+@media (max-width: 900px) {
+  main {
+     margin-left: 0%;
+     margin-right: 15%;
+     background-color: white;
+     height: 100%;
+     margin-top: 1%;
+     margin-bottom: 20%;
+     display: grid;
+     grid-template-columns: 1fr;
+     padding-left: 20%;
+     padding-top: 2%;
+  }
+  article p {
+    text-align: center;
+    font-size: 2vw;
+  }
+  article h1 {
+    font-size: 2vw;
+  }
+  li>a {
+    font-size: 2.1vw;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+.side {
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 0%;
+  opacity: 0.8;
+  position: sticky;
+  top: 25%;
+  position: -webkit-sticky;
+
+}
+.side>button {
+  width: 90%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-left: 5%;
+  margin-top: 5%;
+  background-color: orange;
+  font-size: 1vw;
+}
+footer {
+  margin-left: 15%;
+  margin-right: 12.75%;
+  background-color: white;
+  height: auto;
+  margin-top: 1%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 7%;
+  margin-bottom: 1%;
+}

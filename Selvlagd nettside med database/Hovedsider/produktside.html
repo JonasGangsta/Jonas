@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Spillside</title>
+  <link rel="stylesheet" href="produktside.css">
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyARRj4Ge56Db8XwmTyQuheBIh8XlZlybjk",
+      authDomain: "nettside-m-database-6cf64.firebaseapp.com",
+      databaseURL: "https://nettside-m-database-6cf64.firebaseio.com",
+      projectId: "nettside-m-database-6cf64",
+      storageBucket: "nettside-m-database-6cf64.appspot.com",
+      messagingSenderId: "797171397362"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+</head>
+  <body>
+    <header>
+      <ul>
+        <li> <a href="hoved.html">Hjemmeside</a></li>
+        <li> <a href="PS4.html">PS4</a></li>
+        <li> <a href="XBOX.html">Xbox</a></li>
+        <li> <a href="Switch.html">Nintendo Switch</a></li>
+        <li> <a href="PC.html">PC & Mac</a></li>
+        <li> <a href="Wii.html">Wii</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <script>
+
+
+
+        const main = document.querySelector("main");
+
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var id = url.searchParams.get("id");
+        console.log(id);
+
+      const db = firebase.database();
+      let PS4Spill = db.ref("PS4Spill/" + id)
+      let XboxSpill = db.ref("XboxSpill/" + id)
+      let SwitchSpill = db.ref("SwitchSpill/" + id)
+      let pcogmacSpill = db.ref("pcogmacSpill/" + id)
+      let WiiSpill = db.ref("WiiSpill/" + id)
+
+      function visSpill(snapshot){
+          console.log(snapshot.val());
+          let spillSnap = snapshot.val();
+          let key = snapshot.key;
+
+
+          main.innerHTML +=`
+              <article class="Spillside">
+                <img src="${"../Bilder/" + (spillSnap.Banner  || "untitled.png")}" alt="">
+                <div class="maingrid">
+                <h1>${spillSnap.Tittel}</h1>
+                <iframe class="video" src=${spillSnap.Video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="beskrivelse">${spillSnap.Produktbeskrivelse}</p>
+                <div class="prisgrid">
+                  <p class="pris">${spillSnap.Pris}</p>
+                  <a href="kjøpsside.html?id=${key}"><p onclick="if (confirm('Er du sikker på at du vil kjøpe denne varen?')) commentDelete(1); return false" class="kjøp">Kjøp</p></a>
+                </div>
+                </div>
+              </article>
+          `
+          if (id.charAt(0)=== "P") {
+           PS4Spill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "X") {
+           XboxSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "N") {
+              SwitchSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "M") {
+              pcogmacSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "W") {
+              WiiSpill.on("value", visSpill)
+          }
+      }
+
+      PS4Spill.on("value",visSpill)
+      XboxSpill.on("value",visSpill)
+      SwitchSpill.on("value", visSpill)
+      pcogmacSpill.on("value", visSpill)
+      WiiSpill.on("value", visSpill)
+
+      </script>
+    </main>
+    <footer>
+      <h2>Kontakt oss</h2>
+      <h2>FAQ</h2>
+      <h2>Om oss</h2>
+      <p><a href="mailto:mail@mail.com" target="_top">mail@mail.com</a></p>
+      <p>Hvem er vi?</p>
+      <p>Spillbutikk</p>
+      <p>Tlf: 99 99 99 99</p>
+      <p>En nettside</p>
+      <p>Lokalisert på Høvik, 1363</p>
+      <p><a href="#">Live chat</a> </p>
+    </footer>
+
+
+  </body>
+</html>
