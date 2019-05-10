@@ -1,5 +1,5 @@
 html { overflow-y: scroll; } /*Dette er her for å tvinge scrollbaren til å konstant være der, slik at nettsiden ikke endrer seg etter at denne kommer*/
-ul {
+.navbar {
   list-style-type: none;
   color: black;
   margin: 0;
@@ -29,6 +29,7 @@ li>a {
   padding-bottom: 1.5%;
   text-align: center;
 }
+
 body {
   margin: 0;
   background-color: lightgrey;
@@ -46,11 +47,24 @@ main {
   height: auto;
   padding-bottom: 1%;
   margin-top: 1%;
+  font-family: helvetica;
+  color: black;
+  padding-left: 5%;
+  padding-top: 1%;
+  padding-right: 5%;
 }
-p {
-  text-align: center;
-  padding-top: 5%;
+.overskrift {
+  font-size: 3vw;
 }
+.underoverskrift {
+  font-size: 2vw;
+}
+main>div>a {
+  text-decoration: none;
+  color: black;
+  padding-right: 3%;
+}
+
 @media (max-width: 1200px) {
  li>a {
    font-size: 2vw;

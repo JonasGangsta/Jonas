@@ -17,6 +17,7 @@ header {
   top: 0;
   position: -webkit-sticky;
   margin: 0;
+  z-index: 2;
 }
 li>a {
   float: left;
@@ -25,7 +26,7 @@ li>a {
   font-size: 1.5vw;
   font-family: sans-serif;
   width: 16.66667%;
-  padding-top: 1.5%;
+  padding-top:1.5%;
   padding-bottom: 1.5%;
   text-align: center;
 }
@@ -39,25 +40,72 @@ li>a:hover {
   background-color: #e89004;
 }
 main {
-  min-height: 10vw;
-  margin-left: 15%;
+  min-height: 30vw;
   margin-right: 15%;
+  margin-left: 15%;
   background-color: white;
   height: auto;
-  padding-bottom: 1%;
   margin-top: 1%;
 }
-p {
-  text-align: center;
-  padding-top: 5%;
-}
 @media (max-width: 1200px) {
+ article p {
+   text-align: center;
+   font-size: 1.2vw;
+}
+ article h1 {
+   font-size: 1.2vw;
+   }
  li>a {
    font-size: 2vw;
  }
 }
 @media (max-width: 900px) {
+  article p {
+    text-align: center;
+    font-size: 2vw;
+  }
+  article h1 {
+    font-size: 2vw;
+  }
   li>a {
     font-size: 2.1vw;
   }
+}
+footer {
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: white;
+  height: auto;
+  margin-top: 1%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 7%;
+  margin-bottom: 1%;
+  font-family: sans-serif;
+  font-size: 80%;
+  border-top: solid white;
+  border-bottom: solid white;
+}
+footer>h3 {
+  color: black;
+  font-weight: 600;
+}
+footer>h3>a {
+  text-decoration: none;
+  color: #383838;
+}
+footer>h3>a:hover {
+text-decoration: underline;
+}
+footer>p {
+  font-size: 70%;
+  font-weight: 600;
+  color: #383838;
+}
+footer>p>a {
+text-decoration: none;
+  color: #383838;
+}
+footer>p>a:hover {
+text-decoration: underline;
 }

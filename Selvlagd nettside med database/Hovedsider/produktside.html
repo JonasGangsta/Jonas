@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <title>Spillside</title>
   <link rel="stylesheet" href="produktside.css">
-
-
   <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -19,12 +17,11 @@
     };
     firebase.initializeApp(config);
   </script>
-
 </head>
-  <body>
+<body>
     <header>
       <ul>
-        <li> <a href="hoved.html">Hjemmeside</a></li>
+        <li> <a href="hjemmeside.html">Hjemmeside</a></li>
         <li> <a href="PS4.html">PS4</a></li>
         <li> <a href="XBOX.html">Xbox</a></li>
         <li> <a href="Switch.html">Nintendo Switch</a></li>
@@ -32,12 +29,8 @@
         <li> <a href="Wii.html">Wii</a></li>
       </ul>
     </header>
-
     <main>
       <script>
-
-
-
         const main = document.querySelector("main");
 
         var url_string = window.location.href
@@ -51,65 +44,60 @@
       let SwitchSpill = db.ref("SwitchSpill/" + id)
       let pcogmacSpill = db.ref("pcogmacSpill/" + id)
       let WiiSpill = db.ref("WiiSpill/" + id)
+      var tilbud = db.ref("tilbud/" + id)
 
       function visSpill(snapshot){
           console.log(snapshot.val());
           let spillSnap = snapshot.val();
           let key = snapshot.key;
 
-
           main.innerHTML +=`
               <article class="Spillside">
-                <img src="${"../Bilder/" + (spillSnap.Banner  || "untitled.png")}" alt="">
+                <img src="${"../Bilder/" + (spillSnap.Banner)}" alt="">
                 <div class="maingrid">
                 <h1>${spillSnap.Tittel}</h1>
                 <iframe class="video" src=${spillSnap.Video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <p class="beskrivelse">${spillSnap.Produktbeskrivelse}</p>
                 <div class="prisgrid">
                   <p class="pris">${spillSnap.Pris}</p>
-                  <a href="kjøpsside.html?id=${key}"><p onclick="if (confirm('Er du sikker på at du vil kjøpe denne varen?')) commentDelete(1); return false" class="kjøp">Kjøp</p></a>
+                  <a href="ordrebekreftelse.html?id=${key}"><p onclick="if (confirm('Er du sikker på at du vil kjøpe denne varen?')) commentDelete(1); return false" class="kjøp">Kjøp</p></a>
                 </div>
                 </div>
               </article>
           `
-          if (id.charAt(0)=== "P") {
-           PS4Spill.on("value", visSpill)
-          }
-          else if(id.charAt(0) === "X") {
-           XboxSpill.on("value", visSpill)
-          }
-          else if(id.charAt(0) === "N") {
-              SwitchSpill.on("value", visSpill)
-          }
-          else if(id.charAt(0) === "M") {
-              pcogmacSpill.on("value", visSpill)
-          }
-          else if(id.charAt(0) === "W") {
-              WiiSpill.on("value", visSpill)
-          }
       }
 
-      PS4Spill.on("value",visSpill)
-      XboxSpill.on("value",visSpill)
-      SwitchSpill.on("value", visSpill)
-      pcogmacSpill.on("value", visSpill)
-      WiiSpill.on("value", visSpill)
-
+          if (id.charAt(0)=== "p") {
+             PS4Spill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "x") {
+             XboxSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "n") {
+             SwitchSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "m") {
+             pcogmacSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "w") {
+             WiiSpill.on("value", visSpill)
+          }
+          else if(id.charAt(0) === "t") {
+             tilbud.on("value", visSpill)
+          }
       </script>
     </main>
     <footer>
-      <h2>Kontakt oss</h2>
-      <h2>FAQ</h2>
-      <h2>Om oss</h2>
-      <p><a href="mailto:mail@mail.com" target="_top">mail@mail.com</a></p>
-      <p>Hvem er vi?</p>
-      <p>Spillbutikk</p>
+      <h3><a href="kontakt.html">KONTAKT OSS</a></h3>
+      <h3><a href="FAQ.html">FAQ</a></h3>
+      <h3><a href="omoss.html">OM OSS</a></h3>
+      <p><a href="mailto:mail@mail.com" target="_top">Email</a></p>
+      <p><a href="FAQ.html">Hvem er vi?</a></p>
+      <p><a href="omoss.html">Spillbutikk</a></p>
       <p>Tlf: 99 99 99 99</p>
-      <p>En nettside</p>
-      <p>Lokalisert på Høvik, 1363</p>
+      <p><a href="FAQ.html">Hva gjør vi?</a></p>
+      <p><a href="omoss.html">Lokalisert i Sandvika, 1337</a></p>
       <p><a href="#">Live chat</a> </p>
     </footer>
-
-
   </body>
 </html>

@@ -9,11 +9,11 @@
     <header>
       <ul>
         <li> <a href="hjemmeside.html">Hjemmeside</a></li>
-        <li> <a href="PS4.html">PS4</a></li>
+        <li> <a href="PS4.html"><u>PS4</u></a></li>
         <li> <a href="XBOX.html">Xbox</a></li>
         <li> <a href="Switch.html">Nintendo Switch</a></li>
         <li> <a href="PC.html">PC & Mac</a></li>
-        <li> <a href="Wii.html"><u>Wii</u></a></li>
+        <li> <a href="Wii.html">Wii</a></li>
       </ul>
       <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
       <script>
@@ -42,8 +42,8 @@
           <script>
               const main = document.querySelector("main");
               const db = firebase.database();
-              const WiiSpill = db.ref("WiiSpill");
-              function visWiiSpill(snapshot){
+              const tilbud = db.ref("tilbud");
+              function vistilbud(snapshot){
                   let spillSnap = snapshot.val();
                   let key = snapshot.key;
                   main.innerHTML +=`
@@ -61,41 +61,41 @@
               }
               function visAlfabetisk(){
                 main.innerHTML = ``
-                WiiSpill
+                tilbud
                 .orderByChild("Tittel")
                 .startAt("A")
                 .endAt("Z")
-                .on("child_added",visWiiSpill);
+                .on("child_added",vistilbud);
                 }
                 visAlfabetisk();
               function visFerdig() {
                 main.innerHTML = ``
-                WiiSpill
+                tilbud
                   .orderByChild("Ferdig")
                   .equalTo(1)
-                  .on("child_added",visWiiSpill);
+                  .on("child_added",vistilbud);
               }
               function visLavest() {
                 main.innerHTML = ``
-                WiiSpill
+                tilbud
                   .orderByChild("Pris")
-                  .on("child_added",visWiiSpill);
+                  .on("child_added",vistilbud);
               }
               function visAtilF() {
                 main.innerHTML = ``
-                WiiSpill
+                tilbud
                   .orderByChild("Tittel")
                   .startAt("A")
                   .endAt("G")
-                  .on("child_added",visWiiSpill);
+                  .on("child_added",vistilbud);
               }
               function visGtilZ() {
                 main.innerHTML = ``
-                WiiSpill
+                tilbud
                   .orderByChild("Tittel")
                   .startAt("G")
                   .endAt("Z")
-                  .on("child_added",visWiiSpill);
+                  .on("child_added",vistilbud);
             }
               function topFunction() {
                 document.body.scrollTop = 0;
